@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <!-- CSS --> 
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!---->
+
+    <title>CED - Centro Multidisciplinar</title>
+</head>
+<body>
+
+    <div class="container">
+        <img src="logo.png" alt="Exemplo de Imagem">
+        <h1>Centro Multidisciplinar</h1>
+
+        <form action="/action_page.php" style="max-width:500px;margin:auto">
+            <div class="input-container">
+              <i class="fa fa-user icon"></i>
+              <input class="input-field" type="text" id="cpf" placeholder="CPF / CPNJ" name="cpf" maxlength="14" required>
+            </div>
+          
+            <div class="input-container">
+              <i class="fa fa-envelope icon"></i>
+              <input class="input-field" type="date" name="date">
+            </div>
+          
+            <button type="submit" class="btn">Entrar</button>
+          </form>
+    </div>
+
+<script>
+    document.getElementById('cpf').addEventListener('input', function (e) {
+        var cpf = e.target.value.replace(/\D/g, '');
+        if (cpf.length > 3 && cpf.length < 7) {
+            cpf = cpf.substring(0, 3) + '.' + cpf.substring(3);
+        } else if (cpf.length > 6 && cpf.length < 10) {
+            cpf = cpf.substring(0, 3) + '.' + cpf.substring(3, 6) + '.' + cpf.substring(6);
+        } else if (cpf.length > 9 && cpf.length < 12) {
+            cpf = cpf.substring(0, 3) + '.' + cpf.substring(3, 6) + '.' + cpf.substring(6, 9) + '-' + cpf.substring(9);
+        } else if (cpf.length >= 12) {
+            cpf = cpf.substring(0, 3) + '.' + cpf.substring(3, 6) + '.' + cpf.substring(6, 9) + '-' + cpf.substring(9, 11);
+        }
+        e.target.value = cpf;
+    });
+</script>
+
+</body>
+</html>
